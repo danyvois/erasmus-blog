@@ -3,146 +3,515 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erasmus ad Atene - Daniele Vozza</title>
+    <title>Erasmus ad Atene - La Mia Esperienza</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            background: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background: #34495e;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        nav {
-            background: #2c3e50;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-        h2 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
             color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
-        .gallery {
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .header .intro {
+            font-size: 1.1rem;
+            color: #34495e;
+            max-width: 800px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            color: #556987;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .course-card h3 {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .photo-gallery {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .photo-gallery h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .photo-placeholder {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            object-fit: cover;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #34495e;
-            color: white;
+            gap: 20px;
             margin-top: 30px;
+        }
+
+        .photo-slot {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-slot:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            transform: scale(1.02);
+        }
+
+        .islands-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .island-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .island-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .tips-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .tip-item {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .tip-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+        }
+
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header class="header scroll-animation">
+            <h1>Erasmus ad Atene</h1>
+            <p class="subtitle">Un'avventura indimenticabile in Grecia</p>
+            <p class="intro">I mesi più belli della mia vita tra studio, viaggi e nuove amicizie nel cuore della cultura occidentale</p>
+        </header>
 
-<header>
-    <h1>Il mio Erasmus ad Atene</h1>
-    <p>Febbraio - Giugno 2025 | Racconto completo della mia esperienza</p>
-</header>
+        <div class="content-grid">
+            <div class="card scroll-animation">
+                <div class="card-icon">🏛️</div>
+                <h2>La Città</h2>
+                <p>Atene è una città che ti conquista velocemente. Non è completamente pianeggiante - preparati a qualche salita! - ma questo la rende ancora più affascinante.</p>
+                
+                <p>Ogni quartiere ha la sua identità unica: dal centro storico di <strong>Monastiraki</strong> dove sei immerso tra i templi dell'antica Grecia, passando per <strong>Exarchia</strong> con i suoi locali e café per la vita sociale, fino a <strong>Zografo</strong> sede del campus universitario.</p>
+                
+                <div class="highlight">
+                    <strong>I panorami mozzafiato:</strong> La città offre 3-4 montagnette per viste spettacolari! Il mio preferito è il <strong>monte Strefi</strong> - il più accessibile. <strong>Filopappou</strong> offre una vista diversa dell'Acropoli, mentre il <strong>monte Licabetto</strong> è la vetta più famosa e alta.
+                </div>
+                
+                <p>Altri quartieri da scoprire: <strong>Pireus</strong> (il porto), <strong>Plaka</strong> (carino ma turistico), <strong>Kolonaki</strong>, <strong>Pangrati</strong> e <strong>Kipseli</strong> (più residenziali).</p>
+            </div>
 
-<nav>
-    <a href="#citta">La città</a>
-    <a href="#lingua">La lingua</a>
-    <a href="#alloggio">L'alloggio</a>
-    <a href="#semestre">Il semestre</a>
-    <a href="#corsi">Corsi</a>
-    <a href="#foto">Foto</a>
-</nav>
+            <div class="card scroll-animation">
+                <div class="card-icon">🚇</div>
+                <h2>Trasporti</h2>
+                <p>Il trasporto pubblico mi ha stupito positivamente! I mezzi sono efficienti e ti portano ovunque senza problemi.</p>
+                
+                <div class="highlight">
+                    <strong>Tessera mensile:</strong> 13,50€ al mese con sconto studenti - ne vale assolutamente la pena!
+                </div>
+                
+                <p><strong>Il mitico 608:</strong> L'autobus che attraversa tutta la città, passa ogni 5 minuti. Veramente fantastico!</p>
+                
+                <p><strong>Metro:</strong> Attiva fino a mezzanotte e 40, weekend fino alle 2:00</p>
+                
+                <p><strong>Uber/Bolt:</strong> Corse tipiche 7-10€, perfette da dividere con altri!</p>
+            </div>
 
-<section id="citta">
-    <h2>La città</h2>
-    <p>La città è molto grande, esteticamente non è bellissima, ma ti innamori molto velocemente. Importante da sapere che non è completamente pianeggiante, ma ci sono delle zone in cui è un continuo sali e scendi, abbastanza faticoso se si è a piedi.</p>
+            <div class="card scroll-animation">
+                <div class="card-icon">🎓</div>
+                <h2>Vita Universitaria</h2>
+                <p>Il campus NTUA di Zografo è un ex base militare con edifici un po' datati, ma ha tutto quello che serve!</p>
+                
+                <div class="highlight">
+                    <strong>Centro sportivo COMPLETAMENTE GRATIS:</strong> Tennis, ping pong, basket, palestra e mensa!
+                </div>
+                
+                <p><strong>La mia giornata tipo:</strong> Sveglia tardi (si esce ogni sera!), campus, allenamento, pranzo in mensa, biblioteca per 2-3 ore, cena sempre in mensa, e poi... si esce!</p>
+                
+                <p>Da marzo/aprile, con il bel tempo, sono iniziate le gite nelle isole greche - praticamente un semestre di pura vacanza!</p>
+            </div>
 
-    <p>Ci sono tantissimi quartieri diversi tutti molto caratteristici e con una propria identità, a partire dal centro storico (<b>Monastiraki</b>) in cui sei immerso tra i templi dell'antica Grecia, passando per <b>Exarchia</b> dove troverai un sacco di locali e cafè per la vita sociale, fino ad arrivare a <b>Zografo</b>, sede del campus universitario. E ancora <b>Pireus</b>, dove trovi il porto, <b>Omonia</b> e <b>Viktoria</b>, vicino al centro ma considerate poco sicure, <b>Plaka</b> molto carina ma un po' turistica, <b>Kolonaki</b>, <b>Pangrati</b>, <b>Kipseli</b> più residenziali.</p>
+            <div class="card scroll-animation">
+                <div class="card-icon">🗣️</div>
+                <h2>La Lingua</h2>
+                <p>Le lezioni sono principalmente in greco, quindi quasi impossibili da seguire. Ma non preoccupatevi!</p>
+                
+                <div class="highlight">
+                    Per gli studenti Erasmus sono previste attività specifiche (assignment ed esami) in inglese.
+                </div>
+                
+                <p>È disponibile un corso di greco moderno gratuito online, ma l'orario serale è scomodo. Non avere paura della barriera linguistica - si risolve tutto!</p>
+            </div>
 
-    <p>Una caratteristica bellissima della città è che ci sono 3/4 montagnette da cui puoi avere une bellissima vista dall'alto della città, un panorama suggestivo e romantico. La mia preferita è il <b>monte Strefi</b>, il più basso ma appunto il più accessibile senza troppo sforzo e si trovava vicino a dove avevo casa; <b>Filopappou</b>, molto vicino al centro, puoi ammirare l'Acropoli da un punto di vista diverso; infine il <b>monte Licabetto</b> è la "vetta" più famosa e alta della città, una tappa fondamentale da fare almeno una volta.</p>
+            <div class="card scroll-animation">
+                <div class="card-icon">🏠</div>
+                <h2>L'Alloggio</h2>
+                <p>Ho trovato casa tramite Facebook ed è stata un'esperienza positiva. Nessuna caparra alla firma e affitto dal primo giorno!</p>
+                
+                <p><strong>Costi:</strong> Gli affitti oscillano tra 350-450€/mese. Io pagavo 380€ per una singola con letto matrimoniale.</p>
+                
+                <div class="highlight">
+                    <strong>Consiglio:</strong> Usate la pagina Facebook e Instagram <strong>ATHENStay (@athenstaygr)</strong>, gestita da Efi. Vi troverete benissimo!
+                </div>
+                
+                <p>Ho condiviso casa con 4 persone, tra cui Francesco Tomasi (anche lui Ing. Matematico), con cui ho avuto la fortuna di partire insieme.</p>
+            </div>
 
-    <p>Il trasporto pubblico mi ha stupito: i mezzi sono abbastanza efficienti e mi hanno portato ovunque senza mai troppi problemi. Consiglio di fare la tessera dei mezzi pubblici al costo di 13,50 € al mese con lo sconto studenti. Menzione speciale al 608, il mitico autobus che attraversa tutta la città e ne passa uno ogni 5 minuti, veramente fantastico. La metro è attiva fino a mezzanotte e 40 circa, mentre il venerdì e sabato fino alle 2. Sono presenti Uber e Bolt e costano veramente poco: le corse tipiche costano circa 7-10 euro e puoi smezzarle con altre persone.</p>
+            <div class="card scroll-animation">
+                <div class="card-icon">👥</div>
+                <h2>Vita Sociale</h2>
+                <p>L'associazione <strong>ESN NTUA</strong> è fantastica! Qui ho trovato persone meravigliose e costruito amicizie durature.</p>
+                
+                <div class="highlight">
+                    <strong>Eventi imperdibili:</strong>
+                    <br>• 4 giorni a Salonicco a marzo
+                    <br>• 5 giorni a Creta a maggio con 750 studenti Erasmus da tutta la Grecia!
+                </div>
+                
+                <p>Partecipate a tutti gli eventi ESN e andate assolutamente alle gite - sono esperienze indimenticabili!</p>
+            </div>
+        </div>
 
-    <p>Per la vita sociale, l'associazione <b>ESN NTUA</b> è fantastica: ho trovato al suo interno persone bellissime e ho subito costruito un gruppo di amicizie che ci siamo portati avanti per tutti i mesi dell'Erasmus. Consiglio vivamente di partecipare ai vari eventi che organizzano e di andare assolutamente alle gite: 4 giorni a Salonicco a marzo ma soprattutto 5 giorni a Creta a maggio, dove si riuniscono tutti gli studenti Erasmus da tutta la Grecia, circa 750 persone.</p>
-</section>
+        <div class="photo-gallery scroll-animation">
+            <h2>Galleria Fotografica</h2>
+            <p style="color: #7f8c8d; font-size: 1.1rem; margin-bottom: 10px;">Presto aggiungerò le foto più belle di questa incredibile avventura!</p>
+            
+            <div class="photo-placeholder">
+                <div class="photo-slot">📸 Panorami da Monte Strefi</div>
+                <div class="photo-slot">🏛️ Acropoli e Templi</div>
+                <div class="photo-slot">🏖️ Isole Greche</div>
+                <div class="photo-slot">👫 Momenti con gli amici ESN</div>
+                <div class="photo-slot">🎓 Campus NTUA</div>
+                <div class="photo-slot">🌅 Tramonti ad Atene</div>
+            </div>
+        </div>
 
-<section id="lingua">
-    <h2>La lingua</h2>
-    <p>Le lezioni sono per la maggior parte totalmente in greco quindi è quasi impossibile seguirle. Alcuni professori acconsentono a fare le lezioni in inglese, ma a me personalmente non è successo. Tuttavia non dovete minimamente preoccuparvi della questione lingua dato che per gli studenti Erasmus sono previste attività (assignment ed esami) in inglese.</p>
-    <p>C'è la possibilità di seguire un corso di greco moderno gratuitamente, ma è online in un orario serale scomodo quindi non ho imparato quasi niente di greco.</p>
-</section>
+        <div class="card scroll-animation" style="grid-column: 1 / -1;">
+            <div class="card-icon">🏝️</div>
+            <h2>Le Isole Visitate</h2>
+            <p>Da marzo/aprile, con il bel tempo, sono iniziate le gite nelle isole greche. Tutte facilmente raggiungibili con il traghetto da Pireus:</p>
+            
+            <div class="islands-list">
+                <span class="island-tag">Egina</span>
+                <span class="island-tag">Agistri</span>
+                <span class="island-tag">Idra</span>
+                <span class="island-tag">Poros</span>
+                <span class="island-tag">Spetses</span>
+                <span class="island-tag">Naxos</span>
+                <span class="island-tag">Syros</span>
+                <span class="island-tag">Paros</span>
+                <span class="island-tag">Milos</span>
+                <span class="island-tag">Creta</span>
+                <span class="island-tag">Lesbo</span>
+                <span class="island-tag">Amorgos</span>
+            </div>
+            
+            <p style="margin-top: 20px; font-style: italic;">Preparatevi ad affrontare un semestre di pura vacanza e relax - agli esami ci pensate da metà maggio in poi!</p>
+        </div>
 
-<section id="alloggio">
-    <h2>L'alloggio</h2>
-    <p>Ho trovato la casa su un gruppo Facebook ed è stata un'esperienza molto positiva. Alla firma del contratto non ho dovuto pagare alcun importo di garanzia e ho iniziato a pagare l'affitto esattamente dal giorno in cui sono entrato in casa. Gli affitti ad Atene oscillano tra i 350 e 450 euro al mese, io ne pagavo 380 per una stanza singola con letto matrimoniale.</p>
-    <p>In casa c'erano altre 4 persone in altrettante stanze, tra cui il mio amico e collega <b>Francesco Tomasi</b>, anche lui Ing. Matematico di Statistica, con cui ho avuto la fortuna di partire insieme e condividere molto durante l'Erasmus. Se state cercando casa vi consiglio la pagina Facebook e Instagram <b>ATHENStay</b> (@athenstaygr), gestita da Efi, vi troverete molto bene.</p>
-</section>
+        <div class="tips-section scroll-animation">
+            <h2 style="text-align: center; font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">I Corsi</h2>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">Programma dedicato agli studenti Erasmus con materiale in inglese</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>Optimization</h3>
+                    <p><strong>Prof:</strong> Chrysafinos Konstantinos (molto disponibile)</p>
+                    <p>Libro PDF online + esercizi con soluzioni. Esame non banale ma il prof fornisce un TDE di preparazione quasi identico all'esame reale.</p>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Graph Theory</h3>
+                    <p>Assignment ed esercizi da libro inglese online con soluzioni. <strong>Esame facilissimo:</strong> 4/5 esercizi identici agli assignment, il quinto comunque fattibile.</p>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Philosophy of Science and Technology</h3>
+                    <p>2 meeting in presenza: presentazione corso (febbraio) + presentazione finale (maggio). Assignment di 3000-3500 parole + PowerPoint sul Transumanesimo.</p>
+                    <p><em>Il prof sembra antipatico via mail ma è un pezzo di pane dal vivo. Voto finale: 9/10 a tutti!</em></p>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Deep Learning</h3>
+                    <p>Assignment scritto teorico + assignment pratico Python (confronto reti wide vs deep) + esame finale con 14 crocette facilissime.</p>
+                    <p><em>Consiglio: seguite AN2DL al primo semestre al Polimi, poi venite qui per l'esame!</em></p>
+                </div>
+            </div>
+        </div>
 
-<section id="semestre">
-    <h2>Il semestre</h2>
-    <p>La maggior parte dei corsi sono in lingua greca, quindi è impossibile seguire le lezioni in presenza. Per me non è stato un problema dato che già a Milano ero abituato a non seguire le lezioni ma a studiare individualmente. I professori preparano quindi un programma dedicato agli studenti Erasmus: viene fornito il materiale da studiare e degli assignment da fare durante l'anno.</p>
-    <p>La difficoltà non è elevata e non ho mai avuto problemi. Alla fine del semestre ci sono degli esami conclusivi molto semplici, quindi dal punto di vista accademico non dovete preoccuparvi.</p>
-    <p>Il campus universitario <b>NTUA</b> di Zografo è un'ex base militare: gli edifici sono molto brutti e vecchi, pieni di graffiti. Tuttavia il campus dispone di un centro sportivo con campi da tennis, ping pong, basket, palestra e una mensa... <b>TUTTO COMPLETAMENTE GRATIS</b>.</p>
-    <p>La mia giornata tipo era svegliarmi piuttosto tardi (dato che si esce praticamente ogni sera), andare al campus, allenarmi in palestra o giocare a tennis, pranzare in mensa, andare in biblioteca per 2/3 ore a fare gli assignment, cenare sempre in mensa, tornare a casa e uscire la sera.</p>
-    <p>Da marzo/aprile, quando il tempo diventa bello, sono cominciate tutte le gite nelle isole greche, una più bella dell'altra e sempre in compagnia di tutto il gruppo Erasmus conosciuto. Vi elenco tutte le isole in cui sono stato, tutte facilmente raggiungibili col traghetto da Pireus: <i>Egina, Agistri, Idra, Poros, Spetses, Naxos, Syros, Paros, Milos, Creta, Lesbo, Amorgos</i>. Praticamente dovete prepararvi ad affrontare un semestre di pura vacanza e relax: agli esami ci pensate da metà maggio in poi, è un sogno.</p>
-    <p>Nel periodo degli esami (fine maggio e inizio giugno) invece andavo sempre nell'altro campus NTUA di architettura, che si trova più in città. Anch'esso dispone di una mensa e di una biblioteca, ma non c'è un centro sportivo.</p>
-    <p>Ho vissuto esperienze indimenticabili che non dimenticherò mai: sono stati i mesi più belli della mia vita.</p>
-</section>
-
-<section id="corsi">
-    <h2>Corsi</h2>
-    <ul>
-        <li><b>Optimization</b> – Il professore, Chrysafinos Konstantinos, assegna i capitoli da studiare da un libro PDF reperibile online. Gli esercizi per gli assignment si trovano in fondo a ogni capitolo e online è disponibile anche il manuale con le soluzioni. L'esame non è banale ma il TDE fornito è praticamente identico alla prova finale.</li>
-        <li><b>Graph Theory</b> – Stessa modalità di Optimization. Assignment presi da un libro in inglese con soluzioni online. L'esame è composto da 5 esercizi, di cui 4 identici a quelli svolti durante l'anno.</li>
-        <li><b>Philosophy of Science and Technology</b> – Richiede 2 meeting in presenza: a febbraio presentazione del corso e assegnazione dell'argomento (nel mio caso, il Transumanesimo), a maggio presentazione di un assignment scritto di 3000-3500 parole. Il professore controlla l'uso di AI e plagio, ma i voti sono stati alti per tutti.</li>
-        <li><b>Deep Learning</b> – Assignment teorico a casa, assignment pratico in Python (confronto tra reti wide e deep) e esame finale a 14 crocette semplicissime. Consiglio di seguire AN2DL al Polimi e poi dare l'esame ad Atene per un voto più alto.</li>
-    </ul>
-</section>
-
-<section id="foto">
-    <h2>Galleria fotografica</h2>
-    <div class="gallery">
-        <img src="foto1.jpg" alt="Vista su Atene">
-        <img src="foto2.jpg" alt="Monte Licabetto">
-        <img src="foto3.jpg" alt="Isola di Creta">
-        <img src="foto4.jpg" alt="Acropoli di Atene">
+        <div class="footer scroll-animation">
+            <p>"Ho vissuto esperienze indimenticabili che non dimenticherò mai, sono stati i mesi più belli della mia vita."</p>
+        </div>
     </div>
-</section>
 
-<footer>
-    <p>© 2025 Daniele Vozza - Erasmus Experience</p>
-</footer>
+    <script>
+        // Smooth scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollElements = document.querySelectorAll('.scroll-animation');
+            scrollElements.forEach(el => observer.observe(el));
+        });
+
+        // Add some interactive hover effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
