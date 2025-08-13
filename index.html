@@ -1,4 +1,80 @@
-<!DOCTYPE html>
+.photo-gallery {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .material-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .material-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .material-category h3 {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .file-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .file-item:last-child {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            color: #667eea;
+            font-weight: 500;
+            border: 2px dashed #667eea;
+        }
+
+        .file-item:last-child:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            transform: scale(1.02);
+        }<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -165,15 +241,71 @@
             font-size: 1.2rem;
         }
 
-        .photo-gallery {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .material-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .material-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .material-category h3 {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .file-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .file-item:last-child {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            color: #667eea;
+            font-weight: 500;
+            border: 2px dashed #667eea;
+        }
+
+        .file-item:last-child:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            transform: scale(1.02);
         }
 
         .photo-gallery h2 {
@@ -441,6 +573,53 @@
             </div>
             
             <p style="margin-top: 20px; font-style: italic;">Preparatevi ad affrontare un semestre di pura vacanza e relax - agli esami ci pensate da metà maggio in poi!</p>
+        </div>
+
+        <div class="photo-gallery scroll-animation">
+            <h2>Materiali di Studio</h2>
+            <p style="color: #7f8c8d; font-size: 1.1rem; margin-bottom: 30px;">Tutti i materiali, libri e risorse utilizzati durante i corsi</p>
+            
+            <div class="materials-grid">
+                <div class="material-category">
+                    <h3>📊 Optimization</h3>
+                    <div class="file-list">
+                        <div class="file-item">📄 Libro del corso (PDF)</div>
+                        <div class="file-item">📝 Assignment con soluzioni</div>
+                        <div class="file-item">📋 TDE di preparazione</div>
+                        <div class="file-item">➕ Aggiungi file...</div>
+                    </div>
+                </div>
+                
+                <div class="material-category">
+                    <h3>🔗 Graph Theory</h3>
+                    <div class="file-list">
+                        <div class="file-item">📚 Libro inglese online</div>
+                        <div class="file-item">✅ Soluzioni esercizi</div>
+                        <div class="file-item">📄 Assignment svolti</div>
+                        <div class="file-item">➕ Aggiungi file...</div>
+                    </div>
+                </div>
+                
+                <div class="material-category">
+                    <h3>🤔 Philosophy of Science</h3>
+                    <div class="file-list">
+                        <div class="file-item">📖 Paper sul Transumanesimo</div>
+                        <div class="file-item">🎤 Presentazione PowerPoint</div>
+                        <div class="file-item">📝 Assignment 3500 parole</div>
+                        <div class="file-item">➕ Aggiungi file...</div>
+                    </div>
+                </div>
+                
+                <div class="material-category">
+                    <h3>🧠 Deep Learning</h3>
+                    <div class="file-list">
+                        <div class="file-item">🐍 Codice Python</div>
+                        <div class="file-item">📊 Confronto reti neurali</div>
+                        <div class="file-item">❓ Quiz con 14 domande</div>
+                        <div class="file-item">➕ Aggiungi file...</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="tips-section scroll-animation">
